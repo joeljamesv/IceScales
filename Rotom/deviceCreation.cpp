@@ -13,13 +13,13 @@ class Device {
 public:
   Device() {}
   void init(const std::string &name, const std::string &type, double value) {
-        Dex logger;
+    Dex logger;
 
-    std::filesystem::path firmwareRoot =
-    "/home/joeljames/Firmware";
+    std::filesystem::path firmwareRoot = "/home/joeljames/Firmware";
 
     std::filesystem::path deviceClassPath =
-        firmwareRoot / "sys/class/hwmon" / ("hwmon" + std::to_string(hwmonCounter));
+        firmwareRoot / "sys/class/hwmon" /
+        ("hwmon" + std::to_string(hwmonCounter));
     std::filesystem::path deviceName = deviceClassPath / "name";
     std::filesystem::path deviceType = deviceClassPath / "type";
     std::filesystem::path deviceValue = deviceClassPath / "value";
@@ -27,15 +27,17 @@ public:
     if (!std::filesystem::exists(deviceClassPath)) {
       std::filesystem::create_directories(deviceClassPath);
     }
-    
-    logger.logJournal("Rotom", std::format("{} Directory Created",deviceClassPath.string()), "INFO");
+
+    logger.logJournal(
+        "Rotom", std::format("{} Directory Created", deviceClassPath.string()),
+        "INFO");
 
     std::ofstream(deviceName) << std::format("{}\n", name);
     std::ofstream(deviceType) << std::format("{}\n", type);
     std::ofstream(deviceValue) << std::format("{}\n", value);
 
-        logger.logJournal("Rotom", std::format("{} : {} Sensor Created",name,type), "INFO");
-
+    logger.logJournal(
+        "Rotom", std::format("{} : {} Sensor Created", name, type), "INFO");
 
     std::string busName = std::to_string(busCounter);
     std::string busAddress = "00" + std::to_string(addressCounter);
@@ -54,7 +56,9 @@ public:
       std::filesystem::create_symlink(deviceClassPath, i2cHwmonFolder);
     }
 
-    logger.logJournal("Rotom", std::format("{} symLink Created",i2cHwmonFolder.string()), "INFO");
+    logger.logJournal(
+        "Rotom", std::format("{} symLink Created", i2cHwmonFolder.string()),
+        "INFO");
 
     hwmonCounter++;
     busCounter++;
