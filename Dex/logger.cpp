@@ -9,13 +9,13 @@
 
 Dex::Dex()
 {
-     if(!std::filesystem::exists(logDir))
+     if(!std::filesystem::exists(logFile.parent_path()))
      {
-          std::filesystem::create_directories(logDir);
+          std::filesystem::create_directories(logFile.parent_path());
      }
 }
 
-void Dex::logJournal(const char* requester, const char* message, const char* priority)
+void Dex::logJournal(const std::string& requester, const std::string& message, const std::string& priority)
 {
      std::ofstream logFileHandler(logFile, std::ios::app);
      if(logFileHandler.is_open())

@@ -1,5 +1,5 @@
 executable(
     'rotom',
-    'devicecreation.cpp',
+    'deviceCreation.cpp',
     dependencies : dex_dep
 )
