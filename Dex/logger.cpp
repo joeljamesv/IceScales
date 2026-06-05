@@ -1,17 +1,13 @@
+#include "logger.hpp"
+
 #include <filesystem>
 #include <fstream>
 #include <format>
 #include <chrono>
 #include <iostream>
 
-class Dex
-{
-private:
-     std::filesystem::path logDir = "../../../Firmware/var/log";
-     std::filesystem::path logFile = logDir / "journal.log"; 
 
-public:
-Dex()
+Dex::Dex()
 {
      if(!std::filesystem::exists(logDir))
      {
@@ -19,7 +15,7 @@ Dex()
      }
 }
 
-void logJournal(const char* requester, const char* message, const char* priority)
+void Dex::logJournal(const char* requester, const char* message, const char* priority)
 {
      std::ofstream logFileHandler(logFile, std::ios::app);
      if(logFileHandler.is_open())
@@ -34,11 +30,4 @@ void logJournal(const char* requester, const char* message, const char* priority
      {
           std::cerr << "Failed to open log file at: " << logFile << "\n";
      }
-}
-};
-
-int main()
-{
-     Dex logger;
-     logger.logJournal("Requestee", "The Message", "Priority");
 }
