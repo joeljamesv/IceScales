@@ -16,5 +16,7 @@ usually applications use this, this exposes the higher values such as values, th
 
 Here I assume, the values under /sys/class/hwmon/hwmon* as well as /sys/bus/i2c/device/*-****
 
+**#Logging**
 
+A meson.build are configured in such a way that it logs the entries under /var/log/journal.log
 
