@@ -7,9 +7,14 @@
 
 int main() {
   Dex logger;
-  std::filesystem::path sysPath = "../../../Firmware";
-  std::filesystem::remove_all(sysPath);
+  std::filesystem::path sysPath = "/home/joeljames/Firmware/";
+  std::error_code ec;
+  auto count = std::filesystem::remove_all(sysPath, ec);
 
-  logger.logJournal(
-      "Rotom", std::format("Unable to remove {}", sysPath.string()), "ERROR");
+  if (ec) {
+    logger.logJournal("RotomWash", ec.message(), "ERROR");
+  } else {
+    logger.logJournal("RotomWash", std::format("Removed {} entries", count),
+                      "INFO");
+  }
 }

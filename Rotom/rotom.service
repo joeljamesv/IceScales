@@ -1,0 +1,9 @@
+[Unit]
+Description=Create Fake Devices
+
+[Service]
+Type=oneshot
+ExecStart=/home/joeljames/IceScales/IceScales/build/Rotom/rotom
+
+[Install]
+WantedBy=multi-user.target

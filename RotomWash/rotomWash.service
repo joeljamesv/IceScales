@@ -1,0 +1,9 @@
+[Unit]
+Description=Delete Fake Devices
+
+[Service]
+Type=oneshot
+ExecStart=/home/joeljames/IceScales/IceScales/build/RotomWash/rotomWash
+
+[Install]
+WantedBy=multi-user.target

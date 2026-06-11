@@ -1,5 +1,5 @@
 executable(
-    'rotom',
+    'rotomWash',
     'resetFW.cpp',
     dependencies : dex_dep
 )
