@@ -4,7 +4,6 @@
 #include <filesystem>
 #include <format>
 #include <fstream>
-#include <random>
 
 int hwmonCounter = 0;
 int busCounter = 2;
@@ -70,7 +69,7 @@ public:
   TempSensor() {
     std::string name = "Magby";
     std::string type = "Celsius";
-    double value = magbyDist(gen)
+    double value = magbyDist(gen);
     Device::init(name, type, value);
   }
   ~TempSensor() = default;
