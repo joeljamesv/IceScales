@@ -20,3 +20,15 @@ Here I assume, the values under /sys/class/hwmon/hwmon* as well as /sys/bus/i2c/
 
 A meson.build are configured in such a way that it logs the entries under /var/log/journal.log
 
+
+**#Services**
+
+Services are added, which are triggered by Xerneus and Yveltal, Xerneus triggers start all services, like booting/flashing, and Yveltal stops all active services, 
+
+1. Rotom 
+OneShot Service which creates all the devices and stops itself
+Triggered by Xerneus
+
+2. RotomWash 
+OneShot Service which deletes everythig under the Firmware Path, effective as destroying the entire thing. 
+
