@@ -1,4 +1,5 @@
 #include "../Dex/logger.hpp"
+#include "devices.hpp"
 
 #include <filesystem>
 #include <format>
@@ -14,8 +15,6 @@ public:
   Device() {}
   void init(const std::string &name, const std::string &type, double value) {
     Dex logger;
-
-    std::filesystem::path firmwareRoot = "/home/joeljames/Firmware";
 
     std::filesystem::path deviceClassPath =
         firmwareRoot / "sys/class/hwmon" /
@@ -71,7 +70,7 @@ public:
   TempSensor() {
     std::string name = "Magby";
     std::string type = "Celsius";
-    double value = static_cast<double>(std::rand() % 16 + 25);
+    double value = magbyDist(gen)
     Device::init(name, type, value);
   }
   ~TempSensor() = default;
@@ -82,7 +81,7 @@ public:
   VoltSensor() {
     std::string name = "Elekid";
     std::string type = "Volts";
-    double value = static_cast<double>(std::rand() % 10 + 10);
+    double value = elekidDist(gen);
     Device::init(name, type, value);
   }
   ~VoltSensor() = default;
