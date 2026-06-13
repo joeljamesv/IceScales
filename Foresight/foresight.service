@@ -1,0 +1,11 @@
+[Unit]
+Description=Find/Update Sensors
+Requires = rotom.service
+After = rotom.service
+
+
+[Service]
+ExecStart=/home/joeljames/IceScales/IceScales/build/Foresight/foresight
+
+[Install]
+WantedBy=multi-user.target

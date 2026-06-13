@@ -7,3 +7,4 @@ project(
 subdir('Dex')
 subdir('Rotom')
 subdir('RotomWash')
+subdir('Foresight')
