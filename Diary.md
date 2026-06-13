@@ -32,3 +32,9 @@ Triggered by Xerneus
 2. RotomWash 
 OneShot Service which deletes everythig under the Firmware Path, effective as destroying the entire thing. 
 
+3. Foresight
+This Service adds the busPath, com.Foresight.Sensors 
+
+**#Sensors**
+
+
